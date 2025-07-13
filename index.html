@@ -152,7 +152,7 @@
                     <p class="text-gray-300 mb-6">
                         Our platform ingests vast amounts of structured and unstructured data in real-time. From market prices and SEC filings to global news and sentiment analysis, Operalta builds a comprehensive picture of any asset, so you don't have to.
                     </p>
-                    <a href="mailto:info@operalta.com" class="cta-button bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-orange-700">
+                    <a href="#data-synthesis-page" class="cta-button bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-orange-700">
                         Explore Data Synthesis
                     </a>
                 </div>
@@ -229,7 +229,7 @@
                     <p class="text-gray-300 mb-6">
                         Build sophisticated financial models in a fraction of the time. Our AI Assumption Engine provides data-driven suggestions for key inputs like growth rates and discount rates, grounding your models in reality.
                     </p>
-                    <a href="mailto:info@operalta.com" class="cta-button bg-pink-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-pink-700">
+                    <a href="#dynamic-modeling-page" class="cta-button bg-pink-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-pink-700">
                         See Dynamic Models
                     </a>
                 </div>
@@ -317,6 +317,83 @@
                 </div>
             </div>
         </section>
+
+        <!-- NEW: Data Synthesis Detail Page Section -->
+        <section id="data-synthesis-page" class="py-20 border-t border-gray-800">
+            <div class="text-center max-w-4xl mx-auto">
+                <h2 class="font-logo text-5xl font-bold text-white">From Noise to Narrative</h2>
+                <p class="mt-4 text-xl text-blue-300">Operalta's AI-Powered Data Synthesis Engine</p>
+                <p class="mt-6 text-lg text-gray-300">
+                    Information is everywhere, but insight is rare. Our platform continuously monitors and interprets millions of data points from thousands of sources, connecting the dots so you can see the full picture. We don't just collect data; we build a dynamic knowledge graph of the market.
+                </p>
+            </div>
+            <div class="mt-16 grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg text-center">
+                    <h4 class="font-semibold text-white text-lg mb-2">Structured Data</h4>
+                    <p class="text-gray-400">Real-time market prices, historical performance, and complete financial statements from SEC filings (10-K, 10-Q).</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg text-center">
+                    <h4 class="font-semibold text-white text-lg mb-2">Unstructured Data</h4>
+                    <p class="text-gray-400">Global news articles, press releases, social media trends, and even academic papers, all processed by our NLP engine.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg text-center">
+                    <h4 class="font-semibold text-white text-lg mb-2">Alternative & Macro Data</h4>
+                    <p class="text-gray-400">Economic indicators from FRED, supply chain logistics, and other alternative datasets to provide crucial context.</p>
+                </div>
+            </div>
+            <div class="text-center mt-16">
+                <a href="mailto:info@operalta.com?subject=Data Synthesis Inquiry" class="cta-button bg-orange-600 text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-orange-700">
+                    Request a Demo
+                </a>
+                <a href="#capabilities" class="ml-4 text-gray-400 hover:text-white">Back to Capabilities</a>
+            </div>
+        </section>
+
+        <!-- NEW: Dynamic Modeling Detail Page Section -->
+        <section id="dynamic-modeling-page" class="py-20 border-t border-gray-800">
+            <div class="text-center max-w-4xl mx-auto">
+                <h2 class="font-logo text-5xl font-bold text-white">Models Grounded in Reality</h2>
+                <p class="mt-4 text-xl text-pink-300">Operalta's Dynamic Financial Modeling</p>
+                <p class="mt-6 text-lg text-gray-300">
+                    A financial model is only as good as its assumptions. Our AI Assumption Engine reads the synthesized data for your target asset and provides evidence-based suggestions for the most critical inputs. This eliminates guesswork, reduces bias, and dramatically accelerates the modeling process.
+                </p>
+            </div>
+            <div class="mt-16 max-w-3xl mx-auto">
+                <div class="mockup-window">
+                    <div class="mockup-header">
+                        <div class="mockup-dot bg-red-500"></div>
+                        <div class="mockup-dot bg-yellow-500"></div>
+                        <div class="mockup-dot bg-green-500"></div>
+                    </div>
+                    <div class="mockup-content">
+                        <h4 class="text-lg font-semibold text-white mb-4">Interactive DCF: Adjust Assumptions</h4>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <label for="interactive-growth" class="text-gray-400">Revenue Growth Rate</label>
+                                <input id="interactive-growth" type="range" min="1" max="15" value="8.5" step="0.1" class="w-1/2">
+                                <span id="growth-value" class="font-mono text-white w-16 text-right">8.5%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <label for="interactive-wacc" class="text-gray-400">Discount Rate (WACC)</label>
+                                <input id="interactive-wacc" type="range" min="5" max="15" value="9.2" step="0.1" class="w-1/2">
+                                <span id="wacc-value" class="font-mono text-white w-16 text-right">9.2%</span>
+                            </div>
+                            <div class="border-t border-gray-700 my-4 pt-4 flex justify-between items-center">
+                                <label class="font-bold text-white text-lg">New Intrinsic Value</label>
+                                <span id="interactive-dcf-value" class="font-bold text-green-400 text-xl transition-colors">$192.45</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-16">
+                <a href="mailto:info@operalta.com?subject=Dynamic Modeling Inquiry" class="cta-button bg-pink-600 text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-pink-700">
+                    Learn More About Modeling
+                </a>
+                <a href="#capabilities" class="ml-4 text-gray-400 hover:text-white">Back to Capabilities</a>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -350,7 +427,7 @@
                 </div>
                 <div>
                     <h4 class="font-semibold text-white mb-4">Get the latest insights</h4>
-                    <form action="mailto:info@operalta.com" method="post" enctype="text/plain" class="flex">
+                    <form action="mailto:insights@operalta.com" method="post" enctype="text/plain" class="flex">
                         <input type="email" name="email" placeholder="Enter your email" class="w-full bg-gray-800 border border-gray-700 rounded-l-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <button type="submit" class="bg-blue-600 text-white font-semibold px-4 rounded-r-lg hover:bg-blue-700">Subscribe</button>
                     </form>
@@ -400,11 +477,9 @@
             }, 700);
         }
 
-        // Run animation when mockup is in view
         const synthesisObserver = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting) {
                 runSynthesisAnimation();
-                // Re-run animation every 10 seconds
                 setInterval(runSynthesisAnimation, 10000);
                 synthesisObserver.disconnect();
             }
@@ -444,8 +519,6 @@
         }
         
         deployButton.addEventListener('click', (e) => {
-            // We removed e.preventDefault() so the mailto link works.
-            // The animation will still trigger.
             runDeployAnimation();
         });
 
@@ -455,6 +528,43 @@
             }
         }, { threshold: 0.5 });
         deployObserver.observe(deployButton);
+        
+        // --- NEW: Interactive DCF Calculator ---
+        const growthSlider = document.getElementById('interactive-growth');
+        const waccSlider = document.getElementById('interactive-wacc');
+        const growthValueEl = document.getElementById('growth-value');
+        const waccValueEl = document.getElementById('wacc-value');
+        const dcfValueEl = document.getElementById('interactive-dcf-value');
+        const baseValue = 192.45;
+
+        function updateDcfValue() {
+            const growth = parseFloat(growthSlider.value);
+            const wacc = parseFloat(waccSlider.value);
+            
+            growthValueEl.textContent = `${growth.toFixed(1)}%`;
+            waccValueEl.textContent = `${wacc.toFixed(1)}%`;
+
+            // This is a simplified proxy calculation for demonstration.
+            // A real calculation would be much more complex.
+            const growthFactor = (growth / 8.5);
+            const waccFactor = (9.2 / wacc);
+            const newValue = baseValue * growthFactor * waccFactor;
+
+            dcfValueEl.textContent = `$${newValue.toFixed(2)}`;
+            
+            if (newValue > baseValue * 1.1) {
+                dcfValueEl.classList.remove('text-red-400');
+                dcfValueEl.classList.add('text-green-400');
+            } else if (newValue < baseValue * 0.9) {
+                dcfValueEl.classList.remove('text-green-400');
+                dcfValueEl.classList.add('text-red-400');
+            } else {
+                 dcfValueEl.classList.remove('text-red-400', 'text-green-400');
+            }
+        }
+
+        growthSlider.addEventListener('input', updateDcfValue);
+        waccSlider.addEventListener('input', updateDcfValue);
 
     </script>
 
