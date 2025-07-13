@@ -142,7 +142,7 @@
         <section id="capabilities" class="py-20">
             <div class="text-center mb-16">
                 <h2 class="font-logo text-4xl md:text-5xl font-bold text-white">A New Paradigm in Analysis</h2>
-                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Operalta combines three core capabilities to deliver insights you can't find anywhere else.</p>
+                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Operalta combines core capabilities to deliver insights you can't find anywhere else.</p>
             </div>
 
             <!-- Capability 1: Data Synthesis -->
@@ -165,7 +165,7 @@
                         </div>
                         <div class="mockup-content" id="synthesis-mockup">
                             <div class="relative mb-4">
-                                <input type="text" value="AAPL" readonly class="w-full bg-gray-900 border border-gray-600 rounded-lg py-2 px-4 text-white" />
+                                <input type="text" value="NVDA" readonly class="w-full bg-gray-900 border border-gray-600 rounded-lg py-2 px-4 text-white" />
                             </div>
                             <div class="flex justify-around mb-6">
                                 <div id="source1" class="data-source-icon text-center">
@@ -199,26 +199,26 @@
                             <div class="mockup-dot bg-green-500"></div>
                         </div>
                         <div class="mockup-content" id="dcf-mockup">
-                            <h4 class="text-lg font-semibold text-white mb-4">DCF Model: AAPL</h4>
+                            <h4 class="text-lg font-semibold text-white mb-4">DCF Model: NVDA</h4>
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center">
                                     <label class="text-gray-400">Growth Rate (5Y)</label>
                                     <div class="relative">
-                                        <input id="dcf-growth" type="text" value="8.5%" readonly class="w-28 text-right bg-gray-700 border border-gray-600 rounded-lg py-1 px-3 cursor-pointer hover:border-blue-500"/>
-                                        <div class="ai-suggestion-popup bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-md shadow-lg">AI Suggestion: 8.5%</div>
+                                        <input id="dcf-growth" type="text" value="15.0%" readonly class="w-28 text-right bg-gray-700 border border-gray-600 rounded-lg py-1 px-3 cursor-pointer hover:border-blue-500"/>
+                                        <div class="ai-suggestion-popup bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-md shadow-lg">AI Suggestion: 15.0%</div>
                                     </div>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <label class="text-gray-400">Discount Rate (WACC)</label>
                                     <div class="relative">
-                                        <input id="dcf-wacc" type="text" value="9.2%" readonly class="w-28 text-right bg-gray-700 border border-gray-600 rounded-lg py-1 px-3 cursor-pointer hover:border-blue-500"/>
-                                        <div class="ai-suggestion-popup bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-md shadow-lg">AI Suggestion: 9.2%</div>
+                                        <input id="dcf-wacc" type="text" value="11.5%" readonly class="w-28 text-right bg-gray-700 border border-gray-600 rounded-lg py-1 px-3 cursor-pointer hover:border-blue-500"/>
+                                        <div class="ai-suggestion-popup bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-md shadow-lg">AI Suggestion: 11.5%</div>
                                     </div>
                                 </div>
                                 <div class="border-t border-gray-700 my-4"></div>
                                 <div class="flex justify-between items-center">
                                     <label class="font-bold text-white text-lg">Intrinsic Value</label>
-                                    <span id="dcf-value" class="font-bold text-green-400 text-xl">$192.45</span>
+                                    <span id="dcf-value" class="font-bold text-green-400 text-xl">$125.50</span>
                                 </div>
                             </div>
                         </div>
@@ -236,7 +236,7 @@
             </div>
 
             <!-- Capability 3: Spreadsheet Deployment -->
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-24">
                  <div class="order-2 md:order-1">
                     <h3 class="font-logo text-3xl font-bold text-white mb-4">One-Click Spreadsheet Deployment</h3>
                     <p class="text-gray-300 mb-6">
@@ -252,8 +252,8 @@
                         <div class="mockup-window w-1/2">
                             <div class="mockup-header"><div class="mockup-dot bg-red-500"></div></div>
                             <div class="mockup-content text-center">
-                                <h5 class="text-sm font-bold text-white mb-2">AAPL DCF</h5>
-                                <p class="text-xs text-gray-400 mb-4">Value: $192.45</p>
+                                <h5 class="text-sm font-bold text-white mb-2">NVDA DCF</h5>
+                                <p class="text-xs text-gray-400 mb-4">Value: $125.50</p>
                                 <button class="w-full bg-blue-500 text-xs text-white font-bold py-1 rounded">Deploy to Sheets</button>
                             </div>
                         </div>
@@ -269,11 +269,11 @@
                                     <tbody>
                                         <tr>
                                             <td class="p-1 border border-gray-300 spreadsheet-cell">Growth Rate</td>
-                                            <td class="p-1 border border-gray-300 spreadsheet-cell">8.5%</td>
+                                            <td class="p-1 border border-gray-300 spreadsheet-cell">15.0%</td>
                                         </tr>
                                         <tr>
                                             <td class="p-1 border border-gray-300 spreadsheet-cell">WACC</td>
-                                            <td class="p-1 border border-gray-300 spreadsheet-cell">9.2%</td>
+                                            <td class="p-1 border border-gray-300 spreadsheet-cell">11.5%</td>
                                         </tr>
                                         <tr>
                                             <td class="p-1 border border-gray-300 font-bold spreadsheet-cell">Value</td>
@@ -284,6 +284,54 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- NEW: Capability 4: Crypto Analysis -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                     <div class="mockup-window">
+                        <div class="mockup-header">
+                            <div class="mockup-dot bg-red-500"></div>
+                            <div class="mockup-dot bg-yellow-500"></div>
+                            <div class="mockup-dot bg-green-500"></div>
+                        </div>
+                        <div class="mockup-content" id="crypto-mockup">
+                            <h4 class="text-lg font-semibold text-white mb-4">Digital Asset Analysis: ETH</h4>
+                            <div class="space-y-3">
+                                <div class="bg-gray-700/50 p-3 rounded-lg">
+                                    <div class="flex justify-between items-center text-sm">
+                                        <label class="text-gray-400">On-Chain Volume (24h)</label>
+                                        <span class="font-mono text-green-400">+$21.3B</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-700/50 p-3 rounded-lg">
+                                    <div class="flex justify-between items-center text-sm">
+                                        <label class="text-gray-400">Tokenomics Score</label>
+                                        <span class="font-mono text-white">8.8 / 10</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-700/50 p-3 rounded-lg">
+                                    <div class="flex justify-between items-center text-sm">
+                                        <label class="text-gray-400">Smart Contract Audit</label>
+                                        <span class="font-mono text-green-400 flex items-center gap-1">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                            Passed
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-logo text-3xl font-bold text-white mb-4">Comprehensive Crypto & Digital Assets</h3>
+                    <p class="text-gray-300 mb-6">
+                        Venture beyond traditional finance. Operalta provides institutional-grade analysis for the crypto space, decoding complex on-chain data, tokenomics, and smart contract audits to identify opportunities and risks in the digital asset ecosystem.
+                    </p>
+                    <a href="mailto:info@operalta.com?subject=Crypto Analysis Inquiry" class="cta-button bg-purple-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-purple-700">
+                        Dive into Digital Assets
+                    </a>
                 </div>
             </div>
         </section>
@@ -370,17 +418,17 @@
                         <div class="space-y-4">
                             <div class="flex justify-between items-center">
                                 <label for="interactive-growth" class="text-gray-400">Revenue Growth Rate</label>
-                                <input id="interactive-growth" type="range" min="1" max="15" value="8.5" step="0.1" class="w-1/2">
-                                <span id="growth-value" class="font-mono text-white w-16 text-right">8.5%</span>
+                                <input id="interactive-growth" type="range" min="1" max="25" value="15" step="0.1" class="w-1/2">
+                                <span id="growth-value" class="font-mono text-white w-16 text-right">15.0%</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <label for="interactive-wacc" class="text-gray-400">Discount Rate (WACC)</label>
-                                <input id="interactive-wacc" type="range" min="5" max="15" value="9.2" step="0.1" class="w-1/2">
-                                <span id="wacc-value" class="font-mono text-white w-16 text-right">9.2%</span>
+                                <input id="interactive-wacc" type="range" min="5" max="20" value="11.5" step="0.1" class="w-1/2">
+                                <span id="wacc-value" class="font-mono text-white w-16 text-right">11.5%</span>
                             </div>
                             <div class="border-t border-gray-700 my-4 pt-4 flex justify-between items-center">
                                 <label class="font-bold text-white text-lg">New Intrinsic Value</label>
-                                <span id="interactive-dcf-value" class="font-bold text-green-400 text-xl transition-colors">$192.45</span>
+                                <span id="interactive-dcf-value" class="font-bold text-green-400 text-xl transition-colors">$125.50</span>
                             </div>
                         </div>
                     </div>
@@ -399,7 +447,7 @@
     <!-- Footer -->
     <footer id="contact" class="bg-gray-900 border-t border-gray-800 mt-20">
         <div class="container mx-auto px-6 py-12">
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
                 <div>
                     <a href="#" class="flex items-center gap-3 mb-4">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8C2 8 8 13.3333 16 13.3333C24 13.3333 30 8 30 8" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><path d="M2 8C2 8 8 2.66667 16 2.66667C24 2.66667 30 8 30 8" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><path d="M2 16C2 16 8 21.3333 16 21.3333C24 21.3333 30 16 30 16" stroke="#f97316" stroke-width="3" stroke-linecap="round"/><path d="M2 16C2 16 8 10.6667 16 10.6667C24 10.6667 30 16 30 16" stroke="#f97316" stroke-width="3" stroke-linecap="round"/><path d="M2 24C2 24 8 29.3333 16 29.3333C24 29.3333 30 24 30 24" stroke="#ec4899" stroke-width="3" stroke-linecap="round"/><path d="M2 24C2 24 8 18.6667 16 18.6667C24 18.6667 30 24 30 24" stroke="#ec4899" stroke-width="3" stroke-linecap="round"/></svg>
@@ -425,12 +473,10 @@
                         </ul>
                     </div>
                 </div>
-                <div>
-                    <h4 class="font-semibold text-white mb-4">Get the latest insights</h4>
-                    <form action="mailto:insights@operalta.com" method="post" enctype="text/plain" class="flex">
-                        <input type="email" name="email" placeholder="Enter your email" class="w-full bg-gray-800 border border-gray-700 rounded-l-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <button type="submit" class="bg-blue-600 text-white font-semibold px-4 rounded-r-lg hover:bg-blue-700">Subscribe</button>
-                    </form>
+                <div class="text-center">
+                    <a href="mailto:insights@operalta.com" class="cta-button w-full block bg-blue-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-blue-700">
+                        Subscribe to Operalta Insights
+                    </a>
                 </div>
             </div>
             <div class="mt-12 border-t border-gray-800 pt-8 flex justify-between items-center text-sm text-gray-500">
@@ -451,7 +497,7 @@
         const synthesisMockup = document.getElementById('synthesis-mockup');
         const synthesisTextEl = document.getElementById('ai-synthesis-text');
         const sources = [document.getElementById('source1'), document.getElementById('source2'), document.getElementById('source3')];
-        const synthesisText = "Synthesizing insights... Bull case supported by strong iPhone sales and services growth. Bear case centers on regulatory risks and competition in AI...";
+        const synthesisText = "Synthesizing insights... Bull case supported by AI chip demand. Bear case centers on supply chain constraints and geopolitical tensions...";
 
         function runSynthesisAnimation() {
             let i = 0;
@@ -529,13 +575,13 @@
         }, { threshold: 0.5 });
         deployObserver.observe(deployButton);
         
-        // --- NEW: Interactive DCF Calculator ---
+        // --- Interactive DCF Calculator ---
         const growthSlider = document.getElementById('interactive-growth');
         const waccSlider = document.getElementById('interactive-wacc');
         const growthValueEl = document.getElementById('growth-value');
         const waccValueEl = document.getElementById('wacc-value');
         const dcfValueEl = document.getElementById('interactive-dcf-value');
-        const baseValue = 192.45;
+        const baseValue = 125.50;
 
         function updateDcfValue() {
             const growth = parseFloat(growthSlider.value);
@@ -545,9 +591,10 @@
             waccValueEl.textContent = `${wacc.toFixed(1)}%`;
 
             // This is a simplified proxy calculation for demonstration.
-            // A real calculation would be much more complex.
-            const growthFactor = (growth / 8.5);
-            const waccFactor = (9.2 / wacc);
+            const baseGrowth = 15.0;
+            const baseWacc = 11.5;
+            const growthFactor = (growth / baseGrowth);
+            const waccFactor = (baseWacc / wacc);
             const newValue = baseValue * growthFactor * waccFactor;
 
             dcfValueEl.textContent = `$${newValue.toFixed(2)}`;
