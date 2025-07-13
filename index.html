@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operalta - AI-Powered Investment Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background-color: #111827; /* gray-900 */
+            color: #f3f4f6; /* gray-200 */
+        }
+        .font-logo {
+            font-family: 'Playfair Display', serif;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .mockup-window {
+            border: 1px solid #374151; /* gray-700 */
+            border-radius: 0.75rem;
+            background: #1f2937; /* gray-800 */
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            overflow: hidden;
+        }
+        .mockup-header {
+            padding: 0.75rem;
+            background: #374151; /* gray-700 */
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .mockup-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 9999px;
+        }
+        .mockup-content {
+            padding: 1.5rem;
+        }
+        .data-source-icon {
+            transition: all 0.5s ease;
+            opacity: 0.5;
+            filter: grayscale(80%);
+        }
+        .data-source-icon.active {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+        .typing-effect::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { color: transparent }
+            50% { color: #f3f4f6; }
+        }
+        .ai-suggestion-popup {
+            display: none;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        .deploy-arrow {
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50px);
+        }
+        .deploy-arrow.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .spreadsheet-cell {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .spreadsheet-cell.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3">
+                <!-- Logo SVG -->
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 8C2 8 8 13.3333 16 13.3333C24 13.3333 30 8 30 8" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M2 8C2 8 8 2.66667 16 2.66667C24 2.66667 30 8 30 8" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M2 16C2 16 8 21.3333 16 21.3333C24 21.3333 30 16 30 16" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M2 16C2 16 8 10.6667 16 10.6667C24 10.6667 30 16 30 16" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M2 24C2 24 8 29.3333 16 29.3333C24 29.3333 30 24 30 24" stroke="#ec4899" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M2 24C2 24 8 18.6667 16 18.6667C24 18.6667 30 24 30 24" stroke="#ec4899" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <span class="font-logo text-3xl font-bold text-white">Operalta</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#capabilities" class="text-gray-300 hover:text-white transition">Capabilities</a>
+                <a href="#how-it-works" class="text-gray-300 hover:text-white transition">How It Works</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+            </nav>
+            <a href="#" class="cta-button bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-700">
+                Sign Up
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="container mx-auto px-6">
+        <section class="text-center py-20 md:py-32">
+            <h1 class="font-logo text-5xl md:text-7xl font-bold text-white leading-tight">
+                AI-Powered Investment Analysis. <br/> <span class="text-blue-400">Unparalleled Clarity.</span>
+            </h1>
+            <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-300">
+                Go from raw data to actionable investment strategies in minutes. Our AI synthesizes market data, news, and financial models into reports you can trust.
+            </p>
+            <div class="mt-10">
+                <a href="#" class="cta-button bg-blue-600 text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-blue-700">
+                    Get Started Free
+                </a>
+            </div>
+        </section>
+
+        <!-- Capabilities Section -->
+        <section id="capabilities" class="py-20">
+            <div class="text-center mb-16">
+                <h2 class="font-logo text-4xl md:text-5xl font-bold text-white">A New Paradigm in Analysis</h2>
+                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Operalta combines three core capabilities to deliver insights you can't find anywhere else.</p>
+            </div>
+
+            <!-- Capability 1: Data Synthesis -->
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-24">
+                <div class="order-2 md:order-1">
+                    <h3 class="font-logo text-3xl font-bold text-white mb-4">AI-Powered Data Synthesis</h3>
+                    <p class="text-gray-300 mb-6">
+                        Our platform ingests vast amounts of structured and unstructured data in real-time. From market prices and SEC filings to global news and sentiment analysis, Operalta builds a comprehensive picture of any asset, so you don't have to.
+                    </p>
+                    <a href="#" class="cta-button bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-orange-700">
+                        Explore Data Synthesis
+                    </a>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <div class="mockup-dot bg-red-500"></div>
+                            <div class="mockup-dot bg-yellow-500"></div>
+                            <div class="mockup-dot bg-green-500"></div>
+                        </div>
+                        <div class="mockup-content" id="synthesis-mockup">
+                            <div class="relative mb-4">
+                                <input type="text" value="AAPL" readonly class="w-full bg-gray-900 border border-gray-600 rounded-lg py-2 px-4 text-white" />
+                            </div>
+                            <div class="flex justify-around mb-6">
+                                <div id="source1" class="data-source-icon text-center">
+                                    <svg class="w-12 h-12 mx-auto text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                                    <span class="text-xs text-gray-400">Market Data</span>
+                                </div>
+                                <div id="source2" class="data-source-icon text-center">
+                                    <svg class="w-12 h-12 mx-auto text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3h2m-4 3h2m-4 3h2"></path></svg>
+                                    <span class="text-xs text-gray-400">News</span>
+                                </div>
+                                <div id="source3" class="data-source-icon text-center">
+                                    <svg class="w-12 h-12 mx-auto text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                    <span class="text-xs text-gray-400">Filings</span>
+                                </div>
+                            </div>
+                            <div class="bg-gray-900 p-4 rounded-lg h-24">
+                                <p class="text-sm text-gray-300 typing-effect" id="ai-synthesis-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Capability 2: Dynamic Modeling -->
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-24">
+                <div>
+                    <div class="mockup-window">
+                        <div class="mockup-header">
+                            <div class="mockup-dot bg-red-500"></div>
+                            <div class="mockup-dot bg-yellow-500"></div>
+                            <div class="mockup-dot bg-green-500"></div>
+                        </div>
+                        <div class="mockup-content" id="dcf-mockup">
+                            <h4 class="text-lg font-semibold text-white mb-4">DCF Model: AAPL</h4>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <label class="text-gray-400">Growth Rate (5Y)</label>
+                                    <div class="relative">
+                                        <input id="dcf-growth" type="text" value="8.5%" readonly class="w-28 text-right bg-gray-700 border border-gray-600 rounded-lg py-1 px-3 cursor-pointer hover:border-blue-500"/>
+                                        <div class="ai-suggestion-popup bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-md shadow-lg">AI Suggestion: 8.5%</div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <label class="text-gray-400">Discount Rate (WACC)</label>
+                                    <div class="relative">
+                                        <input id="dcf-wacc" type="text" value="9.2%" readonly class="w-28 text-right bg-gray-700 border border-gray-600 rounded-lg py-1 px-3 cursor-pointer hover:border-blue-500"/>
+                                        <div class="ai-suggestion-popup bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-md shadow-lg">AI Suggestion: 9.2%</div>
+                                    </div>
+                                </div>
+                                <div class="border-t border-gray-700 my-4"></div>
+                                <div class="flex justify-between items-center">
+                                    <label class="font-bold text-white text-lg">Intrinsic Value</label>
+                                    <span id="dcf-value" class="font-bold text-green-400 text-xl">$192.45</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-logo text-3xl font-bold text-white mb-4">Dynamic Financial Modeling</h3>
+                    <p class="text-gray-300 mb-6">
+                        Build sophisticated financial models in a fraction of the time. Our AI Assumption Engine provides data-driven suggestions for key inputs like growth rates and discount rates, grounding your models in reality.
+                    </p>
+                    <a href="#" class="cta-button bg-pink-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-pink-700">
+                        See Dynamic Models
+                    </a>
+                </div>
+            </div>
+
+            <!-- Capability 3: Spreadsheet Deployment -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                 <div class="order-2 md:order-1">
+                    <h3 class="font-logo text-3xl font-bold text-white mb-4">One-Click Spreadsheet Deployment</h3>
+                    <p class="text-gray-300 mb-6">
+                        Don't abandon the tools you love. With a single click, deploy your entire analysis, complete with live formulas, directly into Google Sheets or Microsoft Excel. Your models, your workflow, supercharged by AI.
+                    </p>
+                    <a href="#" id="deploy-button" class="cta-button bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700">
+                        Try Spreadsheet Integration
+                    </a>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="flex items-center justify-center gap-4">
+                        <!-- Platform UI -->
+                        <div class="mockup-window w-1/2">
+                            <div class="mockup-header"><div class="mockup-dot bg-red-500"></div></div>
+                            <div class="mockup-content text-center">
+                                <h5 class="text-sm font-bold text-white mb-2">AAPL DCF</h5>
+                                <p class="text-xs text-gray-400 mb-4">Value: $192.45</p>
+                                <button class="w-full bg-blue-500 text-xs text-white font-bold py-1 rounded">Deploy to Sheets</button>
+                            </div>
+                        </div>
+                        <!-- Arrow -->
+                        <div id="deploy-arrow" class="deploy-arrow text-blue-400">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </div>
+                        <!-- Spreadsheet UI -->
+                        <div class="mockup-window w-1/2 bg-gray-100 text-gray-900">
+                            <div class="mockup-header bg-gray-300"><div class="mockup-dot bg-red-500"></div></div>
+                            <div class="mockup-content p-2 text-xs">
+                                <table class="w-full">
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-1 border border-gray-300 spreadsheet-cell">Growth Rate</td>
+                                            <td class="p-1 border border-gray-300 spreadsheet-cell">8.5%</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-1 border border-gray-300 spreadsheet-cell">WACC</td>
+                                            <td class="p-1 border border-gray-300 spreadsheet-cell">9.2%</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-1 border border-gray-300 font-bold spreadsheet-cell">Value</td>
+                                            <td class="p-1 border border-gray-300 font-bold spreadsheet-cell">=B1*(1+B2)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-20">
+            <div class="text-center mb-16">
+                <h2 class="font-logo text-4xl md:text-5xl font-bold text-white">Effortless Insight in Three Steps</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-600/20 mx-auto mb-6">
+                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                    </div>
+                    <h3 class="font-logo text-2xl font-bold text-white mb-2">1. Ingest Data</h3>
+                    <p class="text-gray-400">Connect your sources or simply enter a stock symbol. Our AI gathers millions of data points instantly.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-orange-600/20 mx-auto mb-6">
+                        <svg class="w-8 h-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <h3 class="font-logo text-2xl font-bold text-white mb-2">2. Synthesize & Analyze</h3>
+                    <p class="text-gray-400">The AI engine reads, understands, and connects every piece of information, running quantitative models in parallel.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-pink-600/20 mx-auto mb-6">
+                        <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h3 class="font-logo text-2xl font-bold text-white mb-2">3. Report & Deploy</h3>
+                    <p class="text-gray-400">Receive a comprehensive report or deploy a live, interactive model to your favorite spreadsheet application.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 border-t border-gray-800 mt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <a href="#" class="flex items-center gap-3 mb-4">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 8C2 8 8 13.3333 16 13.3333C24 13.3333 30 8 30 8" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><path d="M2 8C2 8 8 2.66667 16 2.66667C24 2.66667 30 8 30 8" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/><path d="M2 16C2 16 8 21.3333 16 21.3333C24 21.3333 30 16 30 16" stroke="#f97316" stroke-width="3" stroke-linecap="round"/><path d="M2 16C2 16 8 10.6667 16 10.6667C24 10.6667 30 16 30 16" stroke="#f97316" stroke-width="3" stroke-linecap="round"/><path d="M2 24C2 24 8 29.3333 16 29.3333C24 29.3333 30 24 30 24" stroke="#ec4899" stroke-width="3" stroke-linecap="round"/><path d="M2 24C2 24 8 18.6667 16 18.6667C24 18.6667 30 24 30 24" stroke="#ec4899" stroke-width="3" stroke-linecap="round"/></svg>
+                        <span class="font-logo text-3xl font-bold text-white">Operalta</span>
+                    </a>
+                    <p class="text-gray-400">Clarity in a complex world.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-semibold text-white mb-4">Product</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#capabilities" class="text-gray-400 hover:text-white">Features</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Pricing</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Security</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-white mb-4">Company</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Get the latest insights</h4>
+                    <form class="flex">
+                        <input type="email" placeholder="Enter your email" class="w-full bg-gray-800 border border-gray-700 rounded-l-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="bg-blue-600 text-white font-semibold px-4 rounded-r-lg hover:bg-blue-700">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-8 flex justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2024 Operalta, Inc. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // --- Interactive Mockup Scripts ---
+
+        // Capability 1: Data Synthesis Mockup
+        const synthesisMockup = document.getElementById('synthesis-mockup');
+        const synthesisTextEl = document.getElementById('ai-synthesis-text');
+        const sources = [document.getElementById('source1'), document.getElementById('source2'), document.getElementById('source3')];
+        const synthesisText = "Synthesizing insights... Bull case supported by strong iPhone sales and services growth. Bear case centers on regulatory risks and competition in AI...";
+
+        function runSynthesisAnimation() {
+            let i = 0;
+            sources.forEach(s => s.classList.remove('active'));
+            synthesisTextEl.textContent = '';
+
+            const interval = setInterval(() => {
+                if (i < sources.length) {
+                    sources[i].classList.add('active');
+                    i++;
+                } else {
+                    let charIndex = 0;
+                    const typingInterval = setInterval(() => {
+                        if (charIndex < synthesisText.length) {
+                            synthesisTextEl.textContent += synthesisText.charAt(charIndex);
+                            charIndex++;
+                        } else {
+                            clearInterval(typingInterval);
+                        }
+                    }, 20);
+                    clearInterval(interval);
+                }
+            }, 700);
+        }
+
+        // Run animation when mockup is in view
+        const synthesisObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                runSynthesisAnimation();
+                // Re-run animation every 10 seconds
+                setInterval(runSynthesisAnimation, 10000);
+                synthesisObserver.disconnect();
+            }
+        }, { threshold: 0.5 });
+        synthesisObserver.observe(synthesisMockup);
+
+
+        // Capability 2: DCF Modeling Mockup
+        const dcfInputs = document.querySelectorAll('#dcf-mockup input');
+        dcfInputs.forEach(input => {
+            const popup = input.nextElementSibling;
+            input.addEventListener('mouseenter', () => popup.style.display = 'block');
+            input.addEventListener('mouseleave', () => popup.style.display = 'none');
+        });
+
+
+        // Capability 3: Spreadsheet Deployment Mockup
+        const deployButton = document.getElementById('deploy-button');
+        const deployArrow = document.getElementById('deploy-arrow');
+        const spreadsheetCells = document.querySelectorAll('.spreadsheet-cell');
+
+        function runDeployAnimation() {
+            deployArrow.classList.remove('visible');
+            spreadsheetCells.forEach(cell => cell.classList.remove('visible'));
+
+            setTimeout(() => {
+                deployArrow.classList.add('visible');
+            }, 100);
+
+            setTimeout(() => {
+                let delay = 0;
+                spreadsheetCells.forEach(cell => {
+                    setTimeout(() => cell.classList.add('visible'), delay);
+                    delay += 150;
+                });
+            }, 800);
+        }
+        
+        deployButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            runDeployAnimation();
+        });
+
+        const deployObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                runDeployAnimation();
+            }
+        }, { threshold: 0.5 });
+        deployObserver.observe(deployButton);
+
+    </script>
+
+</body>
+</html>
